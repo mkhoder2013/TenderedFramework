@@ -1,0 +1,43 @@
+[
+    {
+        "name": "id",
+        "regex": "__export__\\.temp_log_\\d+_[a-zA-Z0-9]{8}",  
+        "regexExtended": "__export__\\.temp_log_\\d+_[a-zA-Z0-9]{8}",  
+        "description": "Unique identifier for the record",
+        "dataType": "text",
+        "removetext":"__export__\\.temp_log_"
+    },
+    {
+        "name": "room_id_id",
+        "regex": "Room Admin",
+        "regexExtended": "(?i).*RoomAdmin.*",  
+        "description": "Identifier for the room",
+        "dataType": "text",
+        "removetext":""
+        
+    },
+    {
+        "name": "noted_date",
+        "regex": "\\d{2}-\\d{2}-\\d{4} \\d{2}:\\d{2}",
+        "regexExtended": "\\d{1,2}-\\d{1,2}-\\d{4}\\d{1,2}:\\d{1,2}",  
+        "description": "The date when the note was taken",
+        "dataType": "TIMESTAMP",
+        "removetext":""
+    },
+    {
+        "name": "temp",
+        "regex": "[+-]?([0-9]*[.])?[0-9]+", 
+        "regexExtended": "(?:-10|(?:-?[0-9](?:\\.[0-9]+)?)|(?:[1-4]?[0-9](?:\\.[0-9]+)?)|50(?:\\.0+)?|50)",  
+        "description": "Temperature recorded",
+        "dataType": "float",
+        "removetext":""
+    },
+    {
+        "name": "out_in",
+        "regex": "(Out|In)",
+        "regexExtended": "(?i)(Out|In)",  
+        "description": "Indicates if the action was 'Inside' or 'Outside'",
+        "dataType": "text",
+        "removetext":""
+    }
+]

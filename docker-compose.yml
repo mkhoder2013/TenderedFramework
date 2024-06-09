@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgresServer
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Temp@123
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgAdmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8181:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmindata:/var/lib/pgadmin
+
+  corrector:
+    container_name: correctorHost
+    build:
+      context: .
+      dockerfile: Dockerfile.corrector
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+    volumes:
+      - shareddata:/app/shared
+
+  ingestor:
+    container_name: ingestorHost
+    build:
+      context: .
+      dockerfile: Dockerfile.ingestor
+    ports:
+      - "5001:5001"
+    depends_on:
+      - postgres
+    volumes:
+      - shareddata:/app/shared
+
+  pipeline:
+    container_name: piplineHost
+    build:
+      context: .
+      dockerfile: Dockerfile.pipeline
+    depends_on:
+      - postgres
+    volumes:
+      - shareddata:/app/shared
+
+volumes:
+  pgdata:
+  pgadmindata:
+  shareddata:
+    driver: local
