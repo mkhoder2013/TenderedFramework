@@ -15,4 +15,4 @@ RUN chmod +x /wait-for-it.sh
 EXPOSE 5000
 
 # Run the jar file
-CMD ["/wait-for-it.sh", "postgresServer:5432", "--","java", "-jar", "CorrectorApp.jar"]
+CMD ["java", "-jar", "CorrectorApp.jar"]

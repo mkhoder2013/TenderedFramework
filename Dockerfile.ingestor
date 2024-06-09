@@ -14,4 +14,4 @@ RUN chmod +x /wait-for-it.sh
 EXPOSE 5001
 
 # Run the jar file
-CMD ["/wait-for-it.sh", "postgresServer:5432", "--","java","-jar", "IngestorApp.jar"]
+CMD ["java","-jar", "IngestorApp.jar"]
