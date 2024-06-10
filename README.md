@@ -29,11 +29,30 @@ The following sections provide a detailed overview of the project's concept, imp
 3. run pgAdmin on port 8181:
    user: admin@admin.com
    password: admin
-4.  creat a connection:
-   server: postgresServer
-   POSTGRES_USER: postgres
-   POSTGRES_PASSWORD: Temp@123
-   POSTGRES_DB: postgres
-   ports: "5432"
+
+## Accessing pgAdmin
+
+1. Open your web browser and navigate to `http://localhost:8181`.
+2. Log in using the following credentials:
+    - **Email**: `admin@admin.com`
+    - **Password**: `admin`
+
+## Creating a Connection to PostgreSQL Server
+
+1. After logging into pgAdmin, create a new server connection:
+   - Right-click on `Servers` in the left-hand tree and select `Create` > `Server`.
+
+2. In the `Create - Server` window, enter the following details:
+
+    ### General Tab
+    - **Name**: `postgresServer`
+
+    ### Connection Tab
+    - **Host name/address**: `postgres`
+    - **Port**: `5432`
+    - **Maintenance database**: `postgres`
+    - **Username**: `postgres`
+    - **Password**: `Temp@123`
+
 
      
